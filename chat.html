@@ -19,9 +19,9 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            position: relative;
         }
 
+        /* 主聊天容器 */
         .chat-container {
             width: 100%;
             max-width: 900px;
@@ -32,9 +32,9 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            position: relative;
         }
 
+        /* 右侧边栏 - 历史记录 */
         .sidebar {
             position: fixed;
             right: 20px;
@@ -54,22 +54,15 @@
             padding: 12px 14px;
             background: #f8fafc;
             border-bottom: 1px solid #e5e7eb;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
         }
 
         .sidebar-header h3 {
             font-size: 0.875rem;
             font-weight: 600;
             color: #334155;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin: 0;
         }
 
-        .sidebar-header .history-count {
+        .history-count {
             background: #3b82f6;
             color: white;
             font-size: 0.65rem;
@@ -92,7 +85,6 @@
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.2s ease;
-            position: relative;
             border-left: 3px solid transparent;
         }
 
@@ -109,8 +101,6 @@
         .history-item .question {
             font-size: 0.8rem;
             color: #334155;
-            line-height: 1.4;
-            margin: 0;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -134,11 +124,6 @@
             opacity: 0.4;
         }
 
-        .empty-history p {
-            margin: 4px 0;
-            font-size: 0.85rem;
-        }
-
         .sidebar-footer {
             padding: 12px 16px;
             border-top: 1px solid #e5e7eb;
@@ -154,20 +139,14 @@
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
         }
 
         .clear-history-btn:hover {
             background: #e5e7eb;
-            color: #374151;
         }
 
         .chat-header {
             background: #fff;
-            color: #333;
             padding: 20px 25px;
             display: flex;
             align-items: center;
@@ -183,11 +162,6 @@
         .chat-header .subtitle {
             font-size: 0.85rem;
             opacity: 0.8;
-            margin-top: 2px;
-        }
-
-        .chat-header .icon {
-            font-size: 2rem;
         }
 
         .upload-section {
@@ -198,36 +172,6 @@
             align-items: center;
             gap: 15px;
             flex-wrap: wrap;
-        }
-
-        .scroll-bottom-btn {
-            position: absolute;
-            bottom: 90px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
-            background: #fff;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.3rem;
-            color: #333;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: all 0.2s;
-            z-index: 10;
-        }
-
-        .scroll-bottom-btn:hover {
-            background: #f3f4f6;
-            transform: translateX(-50%) scale(1.05);
-        }
-
-        .scroll-bottom-btn.visible {
-            display: flex;
         }
 
         .upload-section input[type="file"] {
@@ -318,19 +262,6 @@
             flex-direction: row-reverse;
         }
 
-        .message.highlight {
-            animation: highlight-pulse 2s ease;
-        }
-
-        @keyframes highlight-pulse {
-            0%, 100% {
-                background: transparent;
-            }
-            25%, 75% {
-                background: rgba(74, 144, 164, 0.1);
-            }
-        }
-
         .message .avatar {
             width: 40px;
             height: 40px;
@@ -384,16 +315,15 @@
             margin-top: 0;
         }
 
-        .message.assistant .content strong,
-        .message.assistant .content b {
+        .message.assistant .content strong {
             font-weight: 800;
             color: #1a202c;
         }
 
         .message.assistant .content ol {
-            counter-reset: list-counter;
             list-style: none;
             padding-left: 0;
+            counter-reset: list-counter;
         }
 
         .message.assistant .content ol > li {
@@ -429,6 +359,10 @@
             color: #4a90a4;
         }
 
+        .message.assistant .content p {
+            margin-bottom: 10px;
+        }
+
         .thinking-box {
             background: #fff3cd;
             border-left: 4px solid #ffc107;
@@ -442,23 +376,12 @@
         .thinking-box .thinking-title {
             font-weight: 600;
             margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .thinking-box .thinking-title::before {
-            content: "💭";
         }
 
         .thinking-box .thinking-content {
             white-space: pre-wrap;
             max-height: 200px;
             overflow-y: auto;
-        }
-
-        .answer-content {
-            white-space: pre-wrap;
         }
 
         .typing-indicator {
@@ -517,7 +440,7 @@
             color: white;
             font-size: 1.3rem;
             cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
+            transition: background 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -530,7 +453,6 @@
         .send-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
-            transform: none;
         }
 
         .welcome-message {
@@ -544,18 +466,8 @@
             margin-bottom: 15px;
         }
 
-        .welcome-message .upload-hint {
-            color: #4a90a4;
-            font-weight: 500;
-            margin-top: 10px;
-        }
-
         .chat-messages::-webkit-scrollbar {
             width: 6px;
-        }
-
-        .chat-messages::-webkit-scrollbar-track {
-            background: transparent;
         }
 
         .chat-messages::-webkit-scrollbar-thumb {
@@ -563,32 +475,35 @@
             border-radius: 3px;
         }
 
-        .chat-messages::-webkit-scrollbar-thumb:hover {
-            background: #999;
+        .scroll-bottom-btn {
+            position: absolute;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: #333;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10;
         }
 
-        .message.assistant .content p {
-            margin-bottom: 10px;
-        }
-
-        .message.assistant .content p:last-child {
-            margin-bottom: 0;
-        }
-
-        .message.assistant .content ul, .message.assistant .content ol {
-            margin: 10px 0;
-            padding-left: 25px;
-        }
-
-        .message.assistant .content li {
-            margin-bottom: 8px;
+        .scroll-bottom-btn.visible {
+            display: flex;
         }
     </style>
 </head>
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            <span class="icon">📚</span>
+            <span>📚</span>
             <div>
                 <h1>文档问答助手</h1>
                 <div class="subtitle">基于本地模型的智能问答助手</div>
@@ -608,7 +523,6 @@
             <div class="welcome-message" id="welcomeMessage">
                 <h2>👋 欢迎使用智能问答助手</h2>
                 <p>请先上传文档文件，我就可以帮你阅读和分析了！</p>
-                <div class="upload-hint">支持 PDF、Word 格式，支持追加上传</div>
             </div>
         </div>
         <button class="scroll-bottom-btn" id="scrollBottomBtn" onclick="scrollToBottom()">↓</button>
@@ -617,6 +531,8 @@
             <button class="send-btn" id="sendBtn" onclick="sendMessage()" disabled>➤</button>
         </div>
     </div>
+
+    <!-- 右侧边栏：历史记录 -->
     <div class="sidebar">
         <div class="sidebar-header">
             <h3>📜 历史提问 <span class="history-count" id="historyCount">0</span></h3>
@@ -625,7 +541,6 @@
             <div class="empty-history">
                 <div class="icon">📋</div>
                 <p>暂无历史提问</p>
-                <p style="font-size: 0.75rem;">开始提问后将显示在这里</p>
             </div>
         </div>
         <div class="sidebar-footer">
@@ -634,6 +549,7 @@
     </div>
 
     <script>
+        // ==================== DOM元素引用 ====================
         const chatMessages = document.getElementById('chatMessages');
         const userInput = document.getElementById('userInput');
         const sendBtn = document.getElementById('sendBtn');
@@ -643,39 +559,37 @@
         const historyList = document.getElementById('historyList');
         const historyCount = document.getElementById('historyCount');
         const scrollBottomBtn = document.getElementById('scrollBottomBtn');
-        let isGenerating = false;
-        let hasFiles = false;
-        let history = [];
-        let currentQuestionIndex = -1;
-        let welcomeMessage = null;
 
+        // ==================== 状态变量 ====================
+        let isGenerating = false;      // 是否正在生成回答
+        let hasFiles = false;         // 是否有已上传的文件
+        let history = [];             // 历史记录数组
+        let currentQuestionIndex = -1; // 当前选中的历史记录索引
+
+        // ==================== 事件监听器 ====================
         fileInput.addEventListener('change', handleFileUpload);
-        userInput.addEventListener('keydown', function(e) {
+
+        // Enter键发送消息，Shift+Enter换行
+        userInput.addEventListener('keydown', e => {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
                 sendMessage();
             }
         });
+
+        // 自动调整输入框高度
         userInput.addEventListener('input', function() {
             this.style.height = 'auto';
             this.style.height = Math.min(this.scrollHeight, 120) + 'px';
         });
+
+        // 滚动时显示/隐藏滚动到底部按钮
         chatMessages.addEventListener('scroll', function() {
             const isNearBottom = chatMessages.scrollHeight - chatMessages.scrollTop - chatMessages.clientHeight < 100;
-            if (isNearBottom) {
-                scrollBottomBtn.classList.remove('visible');
-            } else {
-                scrollBottomBtn.classList.add('visible');
-            }
+            scrollBottomBtn.classList.toggle('visible', !isNearBottom);
         });
 
-        function scrollToBottom() {
-            chatMessages.scrollTo({
-                top: chatMessages.scrollHeight,
-                behavior: 'smooth'
-            });
-        }
-
+        // ==================== 文件上传 ====================
         async function handleFileUpload(e) {
             const files = e.target.files;
             if (files.length === 0) return;
@@ -690,24 +604,17 @@
             uploadStatus.textContent = '正在解析文档...';
 
             try {
-                const response = await fetch('/api/upload', {
-                    method: 'POST',
-                    body: formData
-                });
+                const response = await fetch('/api/upload', { method: 'POST', body: formData });
                 const data = await response.json();
 
                 if (data.success) {
-                    uploadStatus.className = 'upload-status';
                     uploadStatus.textContent = data.message;
                     fileList.innerHTML = data.total.map(f => `<span class="file-tag">📄 ${f}</span>`).join('');
                     hasFiles = true;
                     userInput.disabled = false;
                     sendBtn.disabled = false;
                     userInput.placeholder = '请输入关于文档的问题...';
-                    
-                    setTimeout(() => {
-                        uploadStatus.style.display = 'none';
-                    }, 3000);
+                    setTimeout(() => { uploadStatus.style.display = 'none'; }, 3000);
                 } else {
                     uploadStatus.className = 'upload-status error';
                     uploadStatus.textContent = '解析失败，请重试';
@@ -715,23 +622,23 @@
             } catch (error) {
                 uploadStatus.className = 'upload-status error';
                 uploadStatus.textContent = '上传失败，请重试';
-                console.error(error);
             }
-            
             fileInput.value = '';
         }
 
+        // ==================== 重置会话 ====================
         async function resetSession() {
             try {
                 await fetch('/api/reset', { method: 'POST' });
                 hasFiles = false;
                 fileList.innerHTML = '';
-                chatMessages.innerHTML = '';
-                const welcomeHtml = '<div class="welcome-message" id="welcomeMessage"><h2>👋 欢迎使用智能问答助手</h2><p>请先上传文档文件，我就可以帮你阅读和分析了！</p><div class="upload-hint">支持 PDF、Word 格式，支持追加上传</div></div>';
-                chatMessages.innerHTML = welcomeHtml;
+                chatMessages.innerHTML = `
+                    <div class="welcome-message" id="welcomeMessage">
+                        <h2>👋 欢迎使用智能问答助手</h2>
+                        <p>请先上传文档文件，我就可以帮你阅读和分析了！</p>
+                    </div>`;
                 userInput.value = '';
                 userInput.disabled = true;
-                userInput.placeholder = '上传文档后，在此输入你的问题...';
                 sendBtn.disabled = true;
                 uploadStatus.style.display = 'none';
                 history = [];
@@ -742,74 +649,51 @@
             }
         }
 
+        // ==================== 消息处理 ====================
+
+        // 添加用户/助手消息到聊天区域
         function addMessage(role, content) {
             const welcome = document.getElementById('welcomeMessage');
-            if (welcome) {
-                welcome.style.display = 'none';
-            }
+            if (welcome) welcome.style.display = 'none';
 
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${role}`;
-            
-            const avatar = document.createElement('div');
-            avatar.className = 'avatar';
-            avatar.textContent = role === 'user' ? '👤' : '🤖';
-            
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'content';
-            contentDiv.innerHTML = escapeHtml(content);
-            
-            messageDiv.appendChild(avatar);
-            messageDiv.appendChild(contentDiv);
+            // 用户消息设置ID以便从历史记录跳转
+            messageDiv.id = 'msg-' + Date.now();
+            messageDiv.innerHTML = `
+                <div class="avatar">${role === 'user' ? '👤' : '🤖'}</div>
+                <div class="content">${parseMarkdown(content)}</div>`;
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
-            
             return messageDiv;
         }
 
+        // 添加助手消息占位符（流式更新用）
         function addAssistantMessage() {
             const welcome = document.getElementById('welcomeMessage');
-            if (welcome) {
-                welcome.style.display = 'none';
-            }
+            if (welcome) welcome.style.display = 'none';
 
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message assistant';
-            messageDiv.id = 'currentAssistant';
-            
-            const avatar = document.createElement('div');
-            avatar.className = 'avatar';
-            avatar.textContent = '🤖';
-            
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'content';
-            
-            messageDiv.appendChild(avatar);
-            messageDiv.appendChild(contentDiv);
+            messageDiv.innerHTML = `
+                <div class="avatar">🤖</div>
+                <div class="content"></div>`;
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
-            
-            return contentDiv;
+            return messageDiv.querySelector('.content');
         }
 
+        // 简单的Markdown解析（处理##标题、**加粗**、换行）
         function parseMarkdown(text) {
             if (!text) return '';
-            
             let html = escapeHtml(text);
-            
-            // 处理二级标题 ## 标题
             html = html.replace(/^##\s+(.+?)(?=\n|$)/gm, '<h2>$1</h2>');
-            
-            // 处理加粗 **文本** 或 __文本__
             html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-            html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
-            
-            // 处理换行
             html = html.replace(/\n/g, '<br>');
-            
             return html;
         }
 
+        // ==================== 发送消息 ====================
         async function sendMessage() {
             const question = userInput.value.trim();
             if (!question || isGenerating || !hasFiles) return;
@@ -819,36 +703,31 @@
             userInput.value = '';
             userInput.style.height = 'auto';
 
+            // 添加用户消息并记录到历史
             const userMessageDiv = addMessage('user', question);
-            const messageId = 'msg-' + Date.now();
-            userMessageDiv.id = messageId;
-            
-            addToHistory(question, messageId);
+            addToHistory(question, userMessageDiv.id);
 
+            // 添加助手消息占位符
             const assistantContent = addAssistantMessage();
             let thinkingContent = '';
             let answerContent = '';
             let isThinking = false;
 
-            assistantContent.innerHTML = `
-                <div class="typing-indicator">
-                    <span></span><span></span><span></span>
-                </div>
-            `;
+            // 显示打字指示器
+            assistantContent.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
 
             try {
                 const response = await fetch('/api/chat/stream', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ question: question }),
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question })
                 });
 
                 const reader = response.body.getReader();
                 const decoder = new TextDecoder();
                 let buffer = '';
 
+                // 流式读取响应数据
                 while (true) {
                     const { done, value } = await reader.read();
                     if (done) break;
@@ -861,32 +740,24 @@
                         if (!line.trim()) continue;
                         try {
                             const data = JSON.parse(line);
-                            
+                            // 处理不同类型的消息
                             if (data.type === 'thinking') {
-                                if (!isThinking) {
-                                    isThinking = true;
-                                    thinkingContent = data.content;
-                                } else {
-                                    thinkingContent += data.content;
-                                }
-                                renderAssistantContent(assistantContent, thinkingContent, answerContent, true);
+                                isThinking = true;
+                                thinkingContent += data.content;
                             } else if (data.type === 'thinking_done') {
                                 isThinking = false;
                                 thinkingContent = data.content;
-                                renderAssistantContent(assistantContent, thinkingContent, answerContent, false);
                             } else if (data.type === 'answer') {
                                 answerContent += data.content;
-                                renderAssistantContent(assistantContent, thinkingContent, answerContent, isThinking);
                             } else if (data.type === 'error') {
                                 answerContent = data.content;
-                                renderAssistantContent(assistantContent, thinkingContent, answerContent, false);
                             }
-                        } catch (e) {
-                            console.error('Parse error:', e);
-                        }
+                            renderAssistantContent(assistantContent, thinkingContent, answerContent, isThinking);
+                        } catch (e) {}
                     }
                 }
             } catch (error) {
+                // 网络错误时显示错误提示
                 answerContent = '请求失败，请稍后重试。';
                 renderAssistantContent(assistantContent, thinkingContent, answerContent, false);
             }
@@ -896,94 +767,81 @@
             userInput.focus();
         }
 
+        // 渲染助手消息内容（思考过程+最终回答）
         function renderAssistantContent(container, thinking, answer, isThinkingActive) {
             let html = '';
-            
             if (thinking) {
-                html += `
-                    <div class="thinking-box">
-                        <div class="thinking-title">思考过程</div>
-                        <div class="thinking-content">${escapeHtml(thinking)}${isThinkingActive ? '<span class="typing-indicator"><span></span><span></span><span></span></span>' : ''}</div>
-                    </div>
-                `;
+                html += `<div class="thinking-box"><div class="thinking-title">思考过程</div><div class="thinking-content">${escapeHtml(thinking)}${isThinkingActive ? '<span class="typing-indicator"><span></span><span></span><span></span></span>' : ''}</div></div>`;
             }
-            
             if (answer) {
-                html += `<div class="answer-content">${parseMarkdown(answer)}</div>`;
+                html += `<div>${parseMarkdown(answer)}</div>`;
             } else if (!isThinkingActive && thinking) {
-                html += `<div class="typing-indicator"><span></span><span></span><span></span></div>`;
+                html += '<div class="typing-indicator"><span></span><span></span><span></span></div>';
             }
-            
             container.innerHTML = html;
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
+        // HTML转义，防止XSS
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }
 
+        // ==================== 历史记录 ====================
+
+        // 添加到历史记录
         function addToHistory(question, messageId) {
-            const historyItem = {
+            history.push({
                 id: Date.now(),
-                question: question,
+                question,
                 time: new Date().toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' }),
-                messageId: messageId
-            };
-            
-            history.push(historyItem);
+                messageId
+            });
             currentQuestionIndex = history.length - 1;
             renderHistory();
         }
 
+        // 渲染历史记录列表
         function renderHistory() {
             if (history.length === 0) {
-                historyList.innerHTML = `
-                    <div class="empty-history">
-                        <div class="icon">�</div>
-                        <p>暂无历史提问</p>
-                        <p style="font-size: 0.75rem;">开始提问后将显示在这里</p>
-                    </div>
-                `;
+                historyList.innerHTML = `<div class="empty-history"><div class="icon">📋</div><p>暂无历史提问</p></div>`;
                 historyCount.textContent = '0';
                 return;
             }
-
             historyCount.textContent = history.length;
             historyList.innerHTML = history.map((item, index) => `
                 <div class="history-item ${index === currentQuestionIndex ? 'active' : ''}" onclick="loadHistoryItem(${index})">
                     <div class="question">${escapeHtml(item.question)}</div>
                     <div class="time">${item.time}</div>
-                </div>
-            `).join('');
+                </div>`).join('');
         }
 
+        // 点击历史记录项，跳转到对应提问位置
         function loadHistoryItem(index) {
             const item = history[index];
             if (!item) return;
-            
             currentQuestionIndex = index;
             renderHistory();
-            
-            if (item.messageId) {
-                const messageElement = document.getElementById(item.messageId);
-                if (messageElement) {
-                    messageElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    messageElement.classList.add('highlight');
-                    setTimeout(() => {
-                        messageElement.classList.remove('highlight');
-                    }, 2000);
-                }
+            const messageElement = document.getElementById(item.messageId);
+            if (messageElement) {
+                messageElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
 
+        // 清空历史记录
         function clearHistory() {
             if (confirm('确定要清空所有历史记录吗？')) {
                 history = [];
                 currentQuestionIndex = -1;
                 renderHistory();
             }
+        }
+
+        // 滚动到底部
+        function scrollToBottom() {
+            chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
         }
     </script>
 </body>
